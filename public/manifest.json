@@ -1,14 +1,27 @@
 {
   "manifest_version": 2,
-
   "name": "Homework Calendar Export",
   "description": "Integrate your homework assignments from Canvas to your google calendar",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk/TMUFZ+tE41SAwTkDbmVhNOjy/bGM4LtO60u3mPQm5DAGmCXyGuuYK7lotq+Hhjgo7/fxTq8VKbi+E6SKLeiqRL0sOmA6L/A7qZGOGl0zxyVnIY41Xxk6ZEcdHQLR57air1lOFu6tg5hdckj3H9tY3iAk4L6Z4aY831gLSW4oz60vYPhQh84TM5xemd6WZBAD8skEktXRklnXQSrRtGZj4RAfMG22jcB4T/OF9efemuFMq98AjNSArCOEJK7e1Oup9+bU5UsRwlytsQQxFGQfdyD5TrQVAHd44mXzuOTPw8S5F+02fu17NjYUWvs3vsZcVmKGcz99u6RRxzCR04BQIDAQAB",
   "version": "0.0.1",
-  "content_security_policy": "script-src 'self'; default-src 'self",
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Open the popup"
   },
-  "permissions": [
-  ]
+  "oauth2": {
+    "client_id": "766414041848-2r2v5djrlo1eehgvjter7jktjvl3h8pg.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar",
+      "https://www.googleapis.com/auth/calendar.settings.readonly",
+      "https://www.googleapis.com/auth/calendar.events"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["empty.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' https://apis.google.com/; object-src 'self'",
+  "permissions": ["identity", "identity.email"]
 }
